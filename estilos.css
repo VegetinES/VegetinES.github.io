@@ -22,15 +22,7 @@ body {
     color: white;
   }
 
-  .column {
-    width: 100%;
-  }
   
-  @media (min-width: 600px) {
-    .column {
-      width: 50%;
-    }
-  }
 
 .tinyPicture {
     height: 60px;
@@ -60,26 +52,33 @@ body {
 
 
 nav ul {
-    background-color: rgb(14, 70, 0);
-    border-style: solid;
-    border-color: rgb(255, 255, 255);
-    border-width: 2px;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-around;
+  background-color: rgb(14, 70, 0);
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-width: 2px;
+  padding: 0.5em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+  nav ul li {
+    text-align: center;
+    list-style-type: none;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    color: rgb(255, 239, 98);
   }
-
-    nav ul li {
-        list-style-type: none;     
-        margin-right: 10px;
-        margin-left: 10px;
-        color: rgb(255, 239, 98);
-    }
     nav ul li a {
       text-decoration: none;
       color: #ffffff;
   }
+
+  @media all and (min-width: 1000px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
 
 img {
   border-radius: 20px;
@@ -111,11 +110,27 @@ div.autor {
   justify-content: space-around;
 }
 
-
+.stylishB {
+  width: 400px;
+  height: 210px;
+  background-color: #10db8d;
+  color: #000000;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #F5FFFA;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
+.someS {
+  padding: 10px;
+  margin-top: 20px;
+}
 
 .stylishBox {
   width: 500px;
-  height: 270px;
+  height: 280px;
   background-color: #c1ebec;
   color: #A52A2A;
   border-style: solid;
