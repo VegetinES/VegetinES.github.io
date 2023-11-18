@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Casillas para seleccionar</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="generarNumeros()">Generar Números Aleatorios</button>
+    <p>Números Aleatorios del 1 al 41: <span id="numerosAleatorios"></span></p><br>
+    <form>
+       <table id="formulario">
+            <!-- Las casillas de verificación se generarán aquí automáticamente -->
+       </table> 
+    </form>
+
+    <script>
+        function generarNumeros() {
+            var numeros = [];
+            for (var i = 1; i <= 41; i++) {
+                numeros.push(i);
+            }
+            // Barajamos los números aleatoriamente
+            for (var i = numeros.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [numeros[i], numeros[j]] = [numeros[j], numeros[i]];
+            }
+            document.getElementById("numerosAleatorios").textContent = numeros.join(", ");
+            organizarCasillas(numeros);
+        }
+
+        function organizarCasillas(numeros) {
+            var formulario = document.getElementById("formulario");
+            formulario.innerHTML = ""; // Limpiar el contenido anterior
+
+            var contador = 1;
+            var fila = document.createElement("tr");
+
+            for (var i = 0; i < numeros.length; i++) {
+                if (contador % 11 === 0) {
+                    fila = document.createElement("tr");
+                    formulario.appendChild(fila);
+                }
+
+                var celda = document.createElement("td");
+                var label = document.createElement("label");
+                label.textContent = numeros[i] + " ";
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                label.appendChild(checkbox);
+
+                // Agregar texto específico cuando el número es 1
+                if (numeros[i] === 1) {
+                    var texto = document.createElement("div");
+                    texto.innerHTML = "Bicarbonato sódico<br>Digestivo<br>Fármaco neutralizante sistémico";
+                    celda.appendChild(texto);
+                }
+
+                celda.appendChild(label);
+                fila.appendChild(celda);
+                contador++;
+            }
+        }
+    </script>
+</body>
+</html>
